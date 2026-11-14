@@ -1,0 +1,72 @@
+/* NRG1 v0.7 — compare hero artwork framing, not a global redesign.
+   Frame styles are independent of the four existing hero background treatments.
+   The original photograph is not used in the v0.7 hero; generated art is used.
+   Do not edit the base site CSS to experiment: adjust these overrides instead. */
+
+/* Use the new artwork's full composition (no cropped dots/stripes). */
+.hero-art { min-height: 0; width: 100%; }
+.hero-photo {
+  min-height: 0;
+  max-height: none;
+  height: auto;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  display: block;
+}
+
+/* A. Old white framed treatment, for comparison only. */
+.frame-original .hero-art {
+  background: #fff;
+  padding: 13px;
+  border: 1px solid #eedfd0;
+  border-radius: 8px;
+  box-shadow: 0 20px 42px rgba(85,48,16,.08);
+  overflow: hidden;
+}
+.frame-original .hero-photo { border-radius: 3px; }
+
+/* Shared settings for B and C: replace the full white border with
+   user's suggested 7px green accent and 12px rounded corners. */
+.frame-accent-flush .hero-art,
+.frame-accent-padded .hero-art {
+  border: 1px solid #e8d6b6;
+  border-left: 7px solid var(--forest);
+  border-radius: 12px;
+  background: transparent;
+  box-shadow: none;
+  overflow: hidden;
+}
+.frame-accent-flush .hero-photo,
+.frame-accent-padded .hero-photo { border-radius: 0; box-shadow: none; }
+
+/* B. Forest accent, art snug against the frame. */
+.frame-accent-flush .hero-art { padding: 0; }
+
+/* C. Forest accent, section's background visible around the artwork.
+   Edit the 18px to explore narrower or wider breathing room. */
+.frame-accent-padded .hero-art { padding: 18px; }
+
+/* Protect the forest frame from the old gold-stage background override.
+   Selecting Gold Behind Art keeps the backdrop gold, but never restores
+   the old border colors or changes the chosen padding. */
+.variant-gold-stage.frame-accent-flush .hero-art,
+.variant-gold-stage.frame-accent-padded .hero-art {
+  border-left: 7px solid var(--forest);
+  border-top: 1px solid #e8d6b6;
+  border-right: 1px solid #e8d6b6;
+  border-bottom: 1px solid #e8d6b6;
+}
+
+/* Accessible experiment controls; hidden in standalone screenshots/files. */
+.frame-picker { background:#fff; border-bottom:1px solid #ece1d5; padding:.75rem 0; }
+.frame-picker .container { display:flex; justify-content:space-between; gap:1.25rem; align-items:center; flex-wrap:wrap; }
+.frame-picker-title { margin:0; font-size:.9rem; font-weight:700; }
+.frame-picker .picker-actions { display:flex; gap:.5rem; flex-wrap:wrap; }
+.frame-picker p { margin:0; color:#4f4b48; font-size:.8rem; }
+
+@media(max-width:750px){
+  .hero-art { min-height: 0; }
+  .frame-accent-padded .hero-art { padding: 14px; }
+  .frame-original .hero-art { padding: 9px; }
+}

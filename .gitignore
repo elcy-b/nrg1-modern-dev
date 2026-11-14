@@ -1,0 +1,13 @@
+# macOS metadata
+.DS_Store
+._*
+
+# VS Code local settings
+.vscode/
+
+# Archives
+*.zip
+
+# Generated design screenshots
+/preview-*.png
+/comparison-*.png
