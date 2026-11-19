@@ -808,6 +808,19 @@ summary:focus-visible {
   }
 }
 
+/* Anchor focus belongs to the biography heading, never the full container. */
+.leadership-biography:focus,
+.bio-section:focus {
+  outline: none;
+}
+.leadership-biography:focus-visible h2,
+.bio-section:focus-visible h2 {
+  text-decoration: underline;
+  text-decoration-color: var(--forest-deep);
+  text-decoration-thickness: 2px;
+  text-underline-offset: .2em;
+}
+
 /* Full Leadership biographies: Bootstrap owns floats, spacing, and clearing. */
 .leadership-bios h1,
 .leadership-bios h2 {
