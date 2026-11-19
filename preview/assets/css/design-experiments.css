@@ -1,0 +1,433 @@
+/* Local experiments only. Keep the preferred page and shared CSS unchanged.
+   Starting proportions for review; adjust these variables together as needed. */
+.design-experiment {
+  --experiment-nav-height: 80px;
+  --experiment-icon-width: 40px;
+  --experiment-logo-width: 120px;
+}
+.design-experiment .site-header-forest {
+  background: var(--forest);
+  border-bottom: 3px solid var(--orange-gold);
+  box-shadow: 0 2px 4px rgba(0,0,0,.08);
+}
+.site-header-forest .nav-wrap {
+  min-height: var(--experiment-nav-height);
+  padding-block: 8px;
+}
+.site-header-forest .wordmark { flex-shrink: 0; }
+.site-header-forest .nav-desktop a { color: #fff; }
+.site-header-forest .nav-desktop a:hover { color: var(--orange-gold); }
+.site-header-forest .brand-icon {
+  display: block;
+  width: var(--experiment-icon-width);
+  height: auto;
+  max-width: 100%;
+  background: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+.site-header-forest .brand-logo {
+  width: var(--experiment-logo-width);
+  height: auto;
+  background: #fff;
+  border: 2px solid #fff;
+  border-radius: 12px;
+}
+.site-header-forest .nav-desktop .nav-contact {
+  border: 1px solid var(--orange-gold);
+  color: var(--orange-deep);
+  border-radius: 5px;
+  padding: .5rem 1rem;
+  background: var(--orange-light);
+}
+.site-header-forest .nav-desktop .nav-contact:hover { background: #fff; }
+.site-header-forest .mobile-nav summary { color: #fff; border-color: var(--orange-gold); }
+.site-header-forest .mobile-nav-items a { color: var(--forest-deep); }
+.site-header-forest .mobile-nav-items a:hover { background: var(--orange-light); }
+/* Shared framing already supplies the beige border, green edge and padding.
+   Use the logo's intrinsic proportions rather than the abstract art's 4:3 box. */
+.design-experiment.frame-accent-padded .hero-art { background: #fff; }
+.design-experiment .hero-photo { aspect-ratio: auto; }
+/* Independent section color comparison. All other research rules are inherited,
+   including the gold marks, upper-right translucent dots and mobile sizing. */
+.design-experiment:has(#research-orange:checked) .research-section { background: var(--orange-deep); }
+.design-experiment .experiment-options { background: var(--paper); border-bottom: 1px solid var(--line); }
+.design-experiment .experiment-options .container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .65rem 1.5rem;
+  padding-block: .75rem;
+  font-size: .85rem;
+}
+.design-experiment .experiment-options a { color: var(--forest-deep); }
+.design-experiment .experiment-options a[aria-current="page"] { font-weight: 750; }
+.design-experiment .experiment-options label { display: flex; align-items: center; gap: .5rem; }
+.design-experiment #research-orange { accent-color: var(--orange-deep); }
+/* Leadership comparison: Bootstrap sm/lg columns; option A adds xl four-across.
+   Portrait dimensions include the border. All spacing changes stay in this section. */
+.design-experiment .leadership-section {
+  --leadership-portrait-size-four: 12rem;
+  --leadership-portrait-size-three: 14rem;
+  --leadership-portrait-size: var(--leadership-portrait-size-four);
+  --leadership-section-padding: 3rem;
+  --leadership-heading-gap: 1.5rem;
+  --leadership-row-gap: 1.75rem;
+  --leadership-column-gap: 1.5rem;
+  --leadership-portrait-caption-gap: .75rem;
+  --leadership-name-title-gap: .25rem;
+  background: var(--paper);
+  padding-block: var(--leadership-section-padding);
+}
+.design-experiment .leadership-section[data-leadership-layout="three-three"] {
+  --leadership-portrait-size: var(--leadership-portrait-size-three);
+}
+.design-experiment .leadership-heading-block { margin-bottom: var(--leadership-heading-gap); }
+.design-experiment .leadership-section h2 { color: var(--forest-deep); }
+.design-experiment .leadership-layout-controls { border: 0; padding: 0; margin: 1rem 0 0; }
+.design-experiment .leadership-layout-controls legend {
+  float: none;
+  font-size: .875rem;
+  font-weight: 600;
+  margin-bottom: .5rem;
+}
+.design-experiment .leadership-layout-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem 1.5rem;
+}
+.design-experiment .leadership-layout-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .875rem;
+  cursor: pointer;
+}
+.design-experiment .leadership-layout-options input { accent-color: var(--forest); }
+.design-experiment .leadership-members {
+  --bs-gutter-x: var(--leadership-column-gap);
+  --bs-gutter-y: 0;
+  row-gap: var(--leadership-row-gap);
+}
+.design-experiment .team-member { min-width: 0; }
+.design-experiment .leadership-portrait-link {
+  display: inline-block;
+  width: min(100%, var(--leadership-portrait-size));
+  border-radius: 50%;
+  line-height: 0;
+  margin-bottom: var(--leadership-portrait-caption-gap);
+}
+.design-experiment .leadership-portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border: .5rem solid rgba(0,0,0,.1);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  transition: border-color .25s ease-out;
+}
+.design-experiment .team-member:hover .leadership-portrait,
+.design-experiment .leadership-portrait-link:focus-visible .leadership-portrait { border-color: transparent; }
+.design-experiment .leadership-portrait-link:focus-visible,
+.design-experiment .leadership-layout-options input:focus-visible {
+  outline: 3px solid var(--forest-deep);
+  outline-offset: 4px;
+}
+.design-experiment .leadership-section h3 {
+  font-size: 1.1rem;
+  color: var(--forest-deep);
+  margin: 0 auto var(--leadership-name-title-gap);
+  max-width: 18rem;
+}
+.design-experiment .leadership-title { color: var(--muted); margin: 0 auto; max-width: 18rem; }
+@media(min-width:1200px) {
+  .design-experiment .leadership-section[data-leadership-layout="four-two"] .team-member { width: 25%; }
+}
+@media(max-width:575.98px) {
+  .design-experiment .leadership-section { --leadership-section-padding: 2.5rem; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .design-experiment .leadership-portrait { transition: none; }
+}
+@media(max-width:750px) {
+  /* Retain the shared breakpoint; keep the opened menu within narrow screens. */
+  .site-header-forest .mobile-nav-items { width: min(240px, calc(100vw - 2rem)); }
+}
+
+/* Tropical Teal Oasis, isolated to hero-logo-teal-nav-full.html.
+   Keep shared --forest variables, orange/gold accents and hero framing intact. */
+.design-experiment.palette-teal {
+  --experiment-teal: #1b7c67;
+  --experiment-teal-ink: #0e3a32;
+}
+.design-experiment.palette-teal .site-header-forest,
+.design-experiment.palette-teal .research-section,
+.design-experiment.palette-teal .site-footer { background: var(--experiment-teal); }
+/* The existing ID-specific :has(#research-orange:checked) rule still wins,
+   preserving the deep-orange research alternative without a duplicate rule. */
+.design-experiment.palette-teal .site-header-forest .nav-desktop a:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: var(--orange-gold);
+}
+.design-experiment.palette-teal .site-header-forest .nav-desktop .nav-contact:hover {
+  color: var(--orange-deep);
+  text-decoration: none;
+}
+/* Sand is an existing pale gold; the original gold text is too dark on teal. */
+.design-experiment.palette-teal .research-section .eyebrow,
+.design-experiment.palette-teal .site-footer a,
+.design-experiment.palette-teal .site-footer .footer-name span { color: var(--sand); }
+.design-experiment.palette-teal .research-points p,
+.design-experiment.palette-teal .site-footer p,
+.design-experiment.palette-teal .site-footer .footer-disclaimer,
+.design-experiment.palette-teal .site-footer a:hover { color: #fff; }
+.design-experiment.palette-teal .site-header-forest .mobile-nav-items a,
+.design-experiment.palette-teal .research-section .button-outline:hover,
+.design-experiment.palette-teal .experiment-options a,
+.design-experiment.palette-teal .feature-card:nth-child(3) .text-link,
+.design-experiment.palette-teal .introduction .section-heading h2,
+.design-experiment.palette-teal .involve-section h2,
+.design-experiment.palette-teal .leadership-section h2,
+.design-experiment.palette-teal .leadership-section h3 { color: var(--experiment-teal-ink); }
+.design-experiment.palette-teal .feature-card:nth-child(3) { border-top-color: var(--experiment-teal); }
+.design-experiment.palette-teal .involve-panel { border-left-color: var(--experiment-teal); }
+.design-experiment.palette-teal .leadership-layout-options input { accent-color: var(--experiment-teal); }
+.design-experiment.palette-teal .leadership-portrait-link:focus-visible,
+.design-experiment.palette-teal .leadership-layout-options input:focus-visible { outline-color: var(--experiment-teal-ink); }
+/* White focus outlines stay visible on teal and on the orange research option. */
+.design-experiment.palette-teal .site-header-forest .nav-desktop a:focus-visible,
+.design-experiment.palette-teal .site-header-forest .wordmark:focus-visible,
+.design-experiment.palette-teal .site-header-forest .mobile-nav summary:focus-visible,
+.design-experiment.palette-teal .research-section a:focus-visible,
+.design-experiment.palette-teal .site-footer a:focus-visible { outline-color: #fff; }
+
+/* Key-shaped full logo: only hero-logo-green-nav-full.html opts in. */
+.design-experiment.key-logo-experiment .site-header-forest .nav-wrap {
+  min-height: 150px;
+  padding-block: 12px;
+  gap: 2rem;
+}
+.design-experiment.key-logo-experiment .site-header-forest .brand-logo {
+  width: 200px;
+  height: auto;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+.design-experiment.key-logo-experiment .nav-desktop { flex-shrink: 0; }
+.design-experiment.key-logo-experiment .hero-photo { aspect-ratio: 416 / 313; }
+/* Switch before the larger logo and five links compete for tablet space. */
+@media (max-width: 991px) {
+  .design-experiment.key-logo-experiment .site-header-forest .nav-wrap {
+    min-height: 124px;
+    padding-block: 12px;
+    gap: 1rem;
+  }
+  .design-experiment.key-logo-experiment .site-header-forest .brand-logo { width: 160px; }
+  .design-experiment.key-logo-experiment .nav-desktop { display: none; }
+  .design-experiment.key-logo-experiment .mobile-nav { display: block; position: relative; }
+  .design-experiment.key-logo-experiment .mobile-nav summary {
+    cursor: pointer;
+    list-style: none;
+    font-weight: 700;
+    border: 1px solid var(--orange-gold);
+    border-radius: 5px;
+    padding: .45rem .7rem;
+  }
+  .design-experiment.key-logo-experiment .mobile-nav summary::-webkit-details-marker { display: none; }
+  .design-experiment.key-logo-experiment .mobile-nav-items {
+    position: absolute;
+    z-index: 20;
+    right: 0;
+    top: calc(100% + 5px);
+    width: min(240px, calc(100vw - 2rem));
+    background: #fff;
+    border: 1px solid var(--line);
+    box-shadow: 0 9px 30px #0002;
+    padding: .5rem;
+  }
+  .design-experiment.key-logo-experiment .mobile-nav-items a {
+    display: block;
+    text-decoration: none;
+    padding: .7rem;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+/* Preferred light-navbar comparison and its local biographies only.
+   Bootstrap columns: 1 / sm 2 / lg 3 / xl 4; flex centers the final two. */
+.light-leadership-comparison .leadership-section {
+  --leadership-portrait-size: 12rem;
+  background: var(--paper);
+  padding-block: 3rem;
+}
+.light-leadership-comparison .leadership-heading-block { margin-bottom: 1.5rem; }
+.light-leadership-comparison .leadership-section h2,
+.light-leadership-comparison .leadership-section h3 { color: var(--forest-deep); }
+.light-leadership-comparison .leadership-members {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  row-gap: 1.75rem;
+}
+.light-leadership-comparison .leadership-section .team-member { min-width: 0; }
+.light-leadership-comparison .leadership-person-link {
+  display: inline-block;
+  max-width: 100%;
+  text-decoration: none;
+  border-radius: .25rem;
+}
+.light-leadership-comparison .leadership-section .team-member img {
+  display: block;
+  width: min(100%, var(--leadership-portrait-size));
+  height: auto;
+  aspect-ratio: 1;
+  margin: 0 auto .75rem;
+  border: .5rem solid rgba(0, 0, 0, .1);
+  border-radius: 50%;
+  object-fit: cover;
+  transition: border-color .25s ease-out;
+}
+.light-leadership-comparison .leadership-section .team-member a:hover img,
+.light-leadership-comparison .leadership-section .team-member a:focus-visible img { border-color: transparent; }
+.light-leadership-comparison .leadership-section h3 { font-size: 1.1rem; margin: 0 0 .25rem; }
+.light-leadership-comparison .leadership-title { color: var(--muted); margin: 0; }
+.light-leadership-comparison .leadership-person-link:focus-visible,
+.light-leadership-comparison .leadership-biographies a:focus-visible {
+  outline: 3px solid var(--forest-deep);
+  outline-offset: 4px;
+}
+.light-leadership-comparison .leadership-biographies { padding-block: 3rem; }
+.light-leadership-comparison .biography-index { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; margin-block: 1.5rem 2rem; }
+.light-leadership-comparison .leadership-biography {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  align-items: start;
+  gap: 2rem;
+  padding-block: 2rem;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 1.5rem;
+}
+.light-leadership-comparison .leadership-biography > img {
+  width: 12rem;
+  height: 12rem;
+  max-width: 100%;
+  border: .5rem solid rgba(0, 0, 0, .1);
+  border-radius: 50%;
+  object-fit: cover;
+}
+.light-leadership-comparison .leadership-biography h2 { color: var(--forest-deep); }
+.light-leadership-comparison .leadership-biography .leadership-title { margin-bottom: .75rem; }
+@media (max-width: 575.98px) {
+  .light-leadership-comparison .leadership-section,
+  .light-leadership-comparison .leadership-biographies { padding-block: 2.5rem; }
+  .light-leadership-comparison .leadership-biography { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .light-leadership-comparison .leadership-section .team-member img { transition: none; }
+}
+
+/* Bootstrap 5.2.3 button theme: selected white-text orange treatment.
+   Existing CDN variants use --bs-btn-*; no Sass/build step required. */
+.nrg1-bootstrap-theme {
+  --nrg1-primary: #d6420e;
+  --nrg1-primary-hover: #c53c0c;
+  --nrg1-primary-active: #b3360a;
+  --nrg1-primary-rgb: 214, 66, 14;
+  --nrg1-primary-text: #fff;
+  /* Text-only and outline controls need darker ink on light surfaces. */
+  --nrg1-primary-ink: #b13f17;
+  --nrg1-primary-ink-hover: #923310;
+  --nrg1-primary-ink-active: #76280c;
+  --nrg1-secondary: #19483e;
+  --nrg1-secondary-hover: #10382f;
+  --nrg1-secondary-active: #0b2a23;
+  --nrg1-secondary-rgb: 25, 72, 62;
+  --bs-primary: var(--nrg1-primary);
+  --bs-primary-rgb: var(--nrg1-primary-rgb);
+  --bs-secondary: var(--nrg1-secondary);
+  --bs-secondary-rgb: var(--nrg1-secondary-rgb);
+}
+.nrg1-bootstrap-theme .btn-primary {
+  --bs-btn-color: var(--nrg1-primary-text);
+  --bs-btn-bg: var(--nrg1-primary);
+  --bs-btn-border-color: var(--nrg1-primary);
+  --bs-btn-hover-color: var(--nrg1-primary-text);
+  --bs-btn-hover-bg: var(--nrg1-primary-hover);
+  --bs-btn-hover-border-color: var(--nrg1-primary-hover);
+  --bs-btn-focus-shadow-rgb: var(--nrg1-primary-rgb);
+  --bs-btn-active-color: var(--nrg1-primary-text);
+  --bs-btn-active-bg: var(--nrg1-primary-active);
+  --bs-btn-active-border-color: var(--nrg1-primary-active);
+  --bs-btn-disabled-color: var(--nrg1-primary-text);
+  --bs-btn-disabled-bg: var(--nrg1-primary);
+  --bs-btn-disabled-border-color: var(--nrg1-primary);
+}
+.nrg1-bootstrap-theme .btn-secondary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--nrg1-secondary);
+  --bs-btn-border-color: var(--nrg1-secondary);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--nrg1-secondary-hover);
+  --bs-btn-hover-border-color: var(--nrg1-secondary-hover);
+  --bs-btn-focus-shadow-rgb: var(--nrg1-secondary-rgb);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--nrg1-secondary-active);
+  --bs-btn-active-border-color: var(--nrg1-secondary-active);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--nrg1-secondary);
+  --bs-btn-disabled-border-color: var(--nrg1-secondary);
+}
+.nrg1-bootstrap-theme .btn-outline-primary {
+  --bs-btn-color: var(--nrg1-primary-ink);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: var(--nrg1-primary-ink);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--nrg1-primary-ink-hover);
+  --bs-btn-hover-border-color: var(--nrg1-primary-ink-hover);
+  --bs-btn-focus-shadow-rgb: 177, 63, 23;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--nrg1-primary-ink-active);
+  --bs-btn-active-border-color: var(--nrg1-primary-ink-active);
+  --bs-btn-disabled-color: var(--nrg1-primary-ink);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--nrg1-primary-ink);
+}
+.nrg1-bootstrap-theme .btn-outline-secondary {
+  --bs-btn-color: var(--nrg1-secondary);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: var(--nrg1-secondary);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--nrg1-secondary-hover);
+  --bs-btn-hover-border-color: var(--nrg1-secondary-hover);
+  --bs-btn-focus-shadow-rgb: var(--nrg1-secondary-rgb);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--nrg1-secondary-active);
+  --bs-btn-active-border-color: var(--nrg1-secondary-active);
+  --bs-btn-disabled-color: var(--nrg1-secondary);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--nrg1-secondary);
+}
+.nrg1-bootstrap-theme .btn-link {
+  --bs-btn-color: var(--nrg1-primary-ink);
+  --bs-btn-hover-color: var(--nrg1-primary-ink-hover);
+  --bs-btn-active-color: var(--nrg1-primary-ink-active);
+  --bs-btn-disabled-color: var(--nrg1-primary-ink);
+  --bs-btn-focus-shadow-rgb: 177, 63, 23;
+}
+/* Let Bootstrap variables win over legacy navigation/link color selectors. */
+.nrg1-bootstrap-theme .btn { color: var(--bs-btn-color); }
+.nrg1-bootstrap-theme .btn:hover,
+.nrg1-bootstrap-theme .btn:focus-visible { color: var(--bs-btn-hover-color); }
+.nrg1-bootstrap-theme .btn:active,
+.nrg1-bootstrap-theme .btn.active { color: var(--bs-btn-active-color); }
+.nrg1-bootstrap-theme .btn:disabled,
+.nrg1-bootstrap-theme .btn.disabled { color: var(--bs-btn-disabled-color); }
+.nrg1-bootstrap-theme .btn:focus-visible {
+  outline: 3px solid var(--nrg1-secondary);
+  outline-offset: 3px;
+}
+.nrg1-bootstrap-theme .research-section .btn:focus-visible { outline-color: #fff; }
